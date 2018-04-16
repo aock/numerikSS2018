@@ -1,3 +1,7 @@
+%%% Aufgabe 1
+dbtype('ex01.m');
+run('ex01.m');
+
 %%% Aufgabe 2
 dbtype('ex02.m');
 a = 0.5;
