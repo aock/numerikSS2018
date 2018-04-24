@@ -1,5 +1,4 @@
-
-
+%% Aufgabe 2
 
 x = linspace(10^(-7),1-10^(-7),100);
 
@@ -7,8 +6,6 @@ cond_L = [];
 cond_U = [];
 cond_L_pivot = [];
 cond_U_pivot = [];
-
-
 
 for eps = x
     [L,U] = epsLU(eps);
@@ -19,11 +16,7 @@ for eps = x
     cond_U_pivot = [cond_U_pivot; cond(U)];
 end
 
-figure
-semilogy(x,cond_L,x,cond_L_pivot)
-
-figure
-semilogy(x,cond_U,x,cond_U_pivot)
-
-
+semilogy(x,cond_L,'rx',x,cond_L_pivot,'r',...
+        x,cond_U,'bx',x,cond_U_pivot,'b');
+legend('cond(L)','cond(L) mit Pivotisierung','cond(U)','cond(U) mit Pivotisierung','Location','NorthWest')
 
