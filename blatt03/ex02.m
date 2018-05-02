@@ -1,5 +1,8 @@
 %% Aufgabe 2
 
+dbtype('epsLU.m');
+dbtype('epsLUPivot.m');
+
 x = linspace(10^(-7),1-10^(-7),100);
 
 cond_L = [];
