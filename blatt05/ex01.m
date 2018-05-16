@@ -1,5 +1,5 @@
 %% Aufgabe 01
-% a) 
+%% a) 
 
 load('data.mat','data');
 
@@ -8,7 +8,7 @@ y = data(:,2);
 
 plot(x,y);
 
-% b)
+%% b)
 
 % A*x = y. A?
 
