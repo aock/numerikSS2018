@@ -1,7 +1,7 @@
-clear
 %% Aufgabe 1
 %% a)
 
+clear
 % functions
 f = @(x) x.^5 - x.^4 * 2 + x.^2*3 - 3 * x + 1;
 df = @(x) 5*x.^4 - 8*x.^3 + 6*x - 3;
