@@ -2,10 +2,6 @@
 %% a)
 clear
 
-exa = 0;
-exb = 1;
-
-if exa
 
 f1 = @(x,y,alpha) x.^2 - y + alpha;
 f2 = @(x,y,alpha) -x + y.^2 + alpha;
@@ -54,11 +50,7 @@ for idx = 1:length(alphas)
     rotate3d on;
 end
 
-end
-
 %% b)
-
-if exb
 
 % funktionen aus aufgabe
 f = @(x,y,alpha) [x^2 - y + alpha; -x + y^2 + alpha];
@@ -106,4 +98,3 @@ fprintf('Anzahl Iterationen %d\n', itNewtonLine);
 fprintf('Anzahl verworfener Punkte: %d\n', num_lost);
 
 
-end

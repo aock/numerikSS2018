@@ -64,7 +64,7 @@ end
 
 x = 1:1:length(pkavg);
 
-figure(1)
+figure(2)
 plot(x,pkavg)
 xlabel('k')
 ylabel('p_k')
