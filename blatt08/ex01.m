@@ -33,8 +33,46 @@ zs = zs_new;
 
 [~,idx] = unique(round(zs ./ (0.001 * (1+i))));
 
-zs = zs(idx)
+fprintf('a) Nullstellen: \n');
+
+zs = zs(idx);
+disp(zs);
 
 %% b)
+
+x = -10-10i;
+
+xz = [x - 1.0, x];
+
+while norm(xz(end) - xz(end-1)) > eps
+    xz = [xz,PolyNewtonSchritt(p,xz(end))];
+end
+
+disp('b):');
+xinf = xz(end);
+fprintf('xinf: %f %+fi\n', real(xinf), imag(xinf));
+
+pkavg = [];
+
+% ck = e
+
+for idx = 3:length(xz)-1
+    pk1 = log(abs(xz(idx-2) - xinf)) / log(abs(xz(idx-1) - xinf));
+    pk2 = log(abs(xz(idx-1) - xinf)) / log(abs(xz(idx) - xinf));
+    pkavg = [pkavg, (pk1 + pk2)/2.0];
+end
+
+x = 1:1:length(pkavg);
+
+figure(1)
+plot(x,pkavg)
+xlabel('k')
+ylabel('p_k')
+title('Konvergenzrate p_k');
+
+
+
+
+
 
 

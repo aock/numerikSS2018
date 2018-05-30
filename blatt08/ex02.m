@@ -2,6 +2,11 @@
 %% a)
 clear
 
+exa = 0;
+exb = 1;
+
+if exa
+
 f1 = @(x,y,alpha) x.^2 - y + alpha;
 f2 = @(x,y,alpha) -x + y.^2 + alpha;
 f = @(x,y,alpha) cat( ndims(x)+1, f1(x,y,alpha), f2(x,y,alpha) );
@@ -49,4 +54,56 @@ for idx = 1:length(alphas)
     rotate3d on;
 end
 
+end
 
+%% b)
+
+if exb
+
+% funktionen aus aufgabe
+f = @(x,y,alpha) [x^2 - y + alpha; -x + y^2 + alpha];
+J = @(x,y) [2*x, -1; -1, 2*y];
+
+% funktion mit alpha = -3/4
+f1 = @(x,y) f(x,y,-3/4);
+
+x1 = 2;
+y1 = 0;
+
+xy_old = [x1 - 1.0; y1 - 1.0];
+xy_new = [x1; y1];
+itNewton = 0;
+% eps ist zu klein: 'Matrix is singular to working precision.' -> waehl eps = 1e-8 
+while norm(xy_new - xy_old) > 1e-8
+    xy_old = xy_new;
+    xy_new = NewtonJacobi(f1,J,xy_old);
+    itNewton = itNewton +1;
+end
+xy_inf = xy_new;
+
+disp('Klassisches Newton-Verfahren xy_inf: ')
+disp(xy_inf)
+fprintf('Anzahl Iterationen %d\n', itNewton); 
+
+% Newton mit line search 
+
+xy_old = [x1 - 1.0; y1 - 1.0];
+xy_new = [x1; y1];
+itNewtonLine = 0;
+num_lost = 0;
+
+while norm(xy_new - xy_old) > 1e-8
+    xy_old = xy_new;
+    [xy_new,nl] = NewtonLinesearchJacobi(f1,J,xy_old);
+    num_lost = num_lost + nl;
+    itNewtonLine = itNewtonLine + 1;
+end
+xy_inf = xy_new;
+
+disp('Linesearch Newton-Verfahren xy_inf: ')
+disp(xy_inf)
+fprintf('Anzahl Iterationen %d\n', itNewtonLine); 
+fprintf('Anzahl verworfener Punkte: %d\n', num_lost);
+
+
+end
