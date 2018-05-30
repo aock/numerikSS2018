@@ -52,6 +52,9 @@ end
 
 %% b)
 
+dbtype NewtonJacobi
+dbtype NewtonLinesearchJacobi
+
 % funktionen aus aufgabe
 f = @(x,y,alpha) [x^2 - y + alpha; -x + y^2 + alpha];
 J = @(x,y) [2*x, -1; -1, 2*y];
