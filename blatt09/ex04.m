@@ -31,7 +31,7 @@ legend(ax1,'k=1','k=2','k=3','k=4')
 %% Newton
 
 ax2 = subplot(2,1,2);
-title(ax1, 'Newton Basen')
+title(ax2, 'Newton Basen')
 
 hold on
 
