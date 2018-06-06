@@ -1,10 +1,11 @@
 %% Aufgabe 5
+dbtype newtonInterpolation
 
 f = @(x) (x.^2 + 1).^(-1);
 tscheby = @(x) cos( ((x.*2.0+1.0).*pi)./22.0 ).*5.0;
 
 
-figure(1)
+fig1 = figure(1);
 x = linspace(-10,10,1000);
 
 %% a) Aequidistant
@@ -13,27 +14,28 @@ fX_A = f(X_A);
 y_a = newtonInterpolation(X_A,fX_A,x);
 
 ax1 = subplot(2,1,1);
-hold on
 plot(ax1, X_A, fX_A,'o');
+hold on
 plot(ax1,x,y_a,'-');
 axis(ax1, [-6 6 -1 2.5]);
 legend(ax1, 'Runge', 'Interpolation')
-hold off
 title(ax1, 'Newton Interpolation: Runge-Funktion - Aequidistant')
+hold off
 
 %% b) Tschebyscheff
 X_T = tscheby(linspace(0,10,11));
 fX_T = f(X_T);
 y_t = newtonInterpolation(X_T,fX_T,x);
-
 ax2 = subplot(2,1,2);
-hold on
+
 plot(ax2, X_T, fX_T,'o');
+hold on
 plot(ax2,x,y_t,'-');
 axis(ax2, [-6 6 -1 2.5]);
 legend(ax2, 'Runge', 'Interpolation')
+title(ax2, 'Newton Interpolation: Runge-Funktion - Tschebyscheff');
 hold off
-title(ax2, 'Newton Interpolation: Runge-Funktion - Tschebyscheff')
+
 
 %% c) Approximationsfehler
 
@@ -62,12 +64,12 @@ for n=num_st
 
 end
 
-figure(2)
+close(fig1);
 
+fig2 = figure(2);
 semilogy(num_st, err_a);
 hold on
 semilogy(num_st, err_t);
 hold off
 title('Approximationsfehler')
 legend('Aequidistant', 'Tschebyscheff');
-
