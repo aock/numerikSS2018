@@ -34,7 +34,7 @@ for s = s_vec
     error_s = [error_s; curr_err];
 end
 
-% b) Regression
+%% b) Regression
 error_s_log = log(error_s);
 p1 = polyfit(n_vec, error_s_log(1,:), 1);
 p2 = polyfit(n_vec, error_s_log(2,:), 1);

@@ -46,7 +46,7 @@ yq = quadric(xq,cq);
 
 %% Auswertung
 figure(1)
-plot(xo, yo, 'x');
+plot(xo, yo, 'o');
 hold on
 
 plot(xs, ys, '-');
